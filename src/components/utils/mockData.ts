@@ -1,0 +1,148 @@
+import { Coach, Program, WorkoutSession, ProgressData } from '../types';
+
+export const mockCoaches: Coach[] = [
+  {
+    id: '1',
+    name: 'Marcus Diallo',
+    specialty: 'Force & Powerlifting',
+    experience: '8 ans',
+    rating: 4.9,
+    clients: 142,
+    image: 'https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=400&q=80',
+    bio: 'Champion national de powerlifting, Marcus a transformé des centaines d\'athlètes. Sa méthode combine technique parfaite et progression progressive.',
+    certifications: ['NSCA-CSCS', 'CrossFit L2', 'Nutrition Sportive'],
+  },
+  {
+    id: '2',
+    name: 'Amara Sow',
+    specialty: 'Cardio & Endurance',
+    experience: '6 ans',
+    rating: 4.8,
+    clients: 98,
+    image: 'https://images.unsplash.com/photo-1548690312-e3b507d8c110?w=400&q=80',
+    bio: 'Ancienne marathonienne professionnelle, Amara spécialise dans l\'amélioration des performances cardiovasculaires et la gestion du poids.',
+    certifications: ['IAAF Level 2', 'FFA Coaching', 'Yoga RYT200'],
+  },
+  {
+    id: '3',
+    name: 'Léa Fontaine',
+    specialty: 'HIIT & Functional',
+    experience: '5 ans',
+    rating: 4.9,
+    clients: 215,
+    image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&q=80',
+    bio: 'Passionnée de fitness fonctionnel, Léa crée des programmes dynamiques qui améliorent la condition physique globale en un minimum de temps.',
+    certifications: ['ACE Certified', 'TRX Instructor', 'Kettlebell Specialist'],
+  },
+  {
+    id: '4',
+    name: 'Karim Benali',
+    specialty: 'Musculation & Hypertrophie',
+    experience: '10 ans',
+    rating: 4.7,
+    clients: 187,
+    image: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400&q=80',
+    bio: 'Bodybuilder IFBB Pro, Karim maîtrise la science de l\'hypertrophie musculaire. Il guide ses clients vers une transformation physique durable.',
+    certifications: ['IFBB Pro Card', 'NSCA-CPT', 'Diététique Sportive'],
+  },
+];
+
+export const mockPrograms: Program[] = [
+  {
+    id: '1',
+    name: 'Force Maximale',
+    description: 'Programme de 12 semaines pour développer une force explosive et augmenter vos performances au maximum.',
+    duration: '12 semaines',
+    level: 'Avancé',
+    category: 'Force',
+    sessionsPerWeek: 4,
+    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80',
+    coach: mockCoaches[0],
+    exercises: [
+      { id: 'e1', name: 'Squat', sets: 5, reps: '3-5', rest: '3 min', muscle: 'Quadriceps' },
+      { id: 'e2', name: 'Développé couché', sets: 5, reps: '3-5', rest: '3 min', muscle: 'Pectoraux' },
+      { id: 'e3', name: 'Soulevé de terre', sets: 3, reps: '3', rest: '4 min', muscle: 'Dos/Lombaires' },
+      { id: 'e4', name: 'Presse militaire', sets: 4, reps: '4-6', rest: '2 min', muscle: 'Épaules' },
+    ],
+  },
+  {
+    id: '2',
+    name: 'Cardio Endurance Pro',
+    description: 'Améliorez votre VO2max et votre endurance avec ce programme scientifiquement conçu pour des résultats visibles en 8 semaines.',
+    duration: '8 semaines',
+    level: 'Intermédiaire',
+    category: 'Cardio',
+    sessionsPerWeek: 5,
+    image: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=600&q=80',
+    coach: mockCoaches[1],
+    exercises: [
+      { id: 'e5', name: 'Course fractionnée', sets: 8, reps: '400m', rest: '90 sec', muscle: 'Cardio' },
+      { id: 'e6', name: 'Vélo HIIT', sets: 10, reps: '1 min', rest: '30 sec', muscle: 'Cardio' },
+      { id: 'e7', name: 'Rameur', sets: 4, reps: '500m', rest: '2 min', muscle: 'Cardio/Dos' },
+    ],
+  },
+  {
+    id: '3',
+    name: 'HIIT Brûle-Graisses',
+    description: 'Séances intenses de 30 minutes pour brûler un maximum de calories. Parfait pour perdre du poids rapidement tout en tonifiant.',
+    duration: '6 semaines',
+    level: 'Débutant',
+    category: 'HIIT',
+    sessionsPerWeek: 3,
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80',
+    coach: mockCoaches[2],
+    exercises: [
+      { id: 'e8', name: 'Burpees', sets: 4, reps: '15', rest: '45 sec', muscle: 'Full body' },
+      { id: 'e9', name: 'Mountain climbers', sets: 3, reps: '30 sec', rest: '15 sec', muscle: 'Core' },
+      { id: 'e10', name: 'Jump squats', sets: 4, reps: '20', rest: '30 sec', muscle: 'Jambes' },
+      { id: 'e11', name: 'Box jumps', sets: 3, reps: '12', rest: '1 min', muscle: 'Explosivité' },
+    ],
+  },
+  {
+    id: '4',
+    name: 'Hypertrophie Volume',
+    description: 'Programme de prise de masse musculaire basé sur le volume d\'entraînement et la technique progressive.',
+    duration: '16 semaines',
+    level: 'Intermédiaire',
+    category: 'Musculation',
+    sessionsPerWeek: 5,
+    image: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80',
+    coach: mockCoaches[3],
+    exercises: [
+      { id: 'e12', name: 'Curl biceps', sets: 4, reps: '10-12', rest: '90 sec', muscle: 'Biceps' },
+      { id: 'e13', name: 'Extension triceps', sets: 4, reps: '10-12', rest: '90 sec', muscle: 'Triceps' },
+      { id: 'e14', name: 'Lateral raise', sets: 3, reps: '15', rest: '60 sec', muscle: 'Épaules' },
+      { id: 'e15', name: 'Tirage horizontal', sets: 4, reps: '10', rest: '90 sec', muscle: 'Dos' },
+    ],
+  },
+];
+
+export const mockSessions: WorkoutSession[] = [
+  { id: 's1', date: '2024-03-18', programName: 'Force Maximale', duration: 75, calories: 480, exercises: 6, completed: true },
+  { id: 's2', date: '2024-03-16', programName: 'Force Maximale', duration: 68, calories: 430, exercises: 5, completed: true },
+  { id: 's3', date: '2024-03-14', programName: 'Force Maximale', duration: 80, calories: 510, exercises: 6, completed: true },
+  { id: 's4', date: '2024-03-12', programName: 'Force Maximale', duration: 72, calories: 460, exercises: 6, completed: true },
+  { id: 's5', date: '2024-03-10', programName: 'HIIT Bonus', duration: 35, calories: 320, exercises: 4, completed: true },
+  { id: 's6', date: '2024-03-08', programName: 'Force Maximale', duration: 78, calories: 495, exercises: 6, completed: true },
+  { id: 's7', date: '2024-03-20', programName: 'Force Maximale', duration: 0, calories: 0, exercises: 6, completed: false },
+];
+
+export const mockProgressData: ProgressData[] = [
+  { week: 'S1', sessions: 3, calories: 1240, duration: 180 },
+  { week: 'S2', sessions: 4, calories: 1680, duration: 240 },
+  { week: 'S3', sessions: 3, calories: 1320, duration: 200 },
+  { week: 'S4', sessions: 5, calories: 2100, duration: 310 },
+  { week: 'S5', sessions: 4, calories: 1750, duration: 270 },
+  { week: 'S6', sessions: 4, calories: 1890, duration: 285 },
+  { week: 'S7', sessions: 5, calories: 2240, duration: 340 },
+  { week: 'S8', sessions: 4, calories: 1965, duration: 295 },
+];
+
+export const mockUser = {
+  id: '1',
+  name: 'Alex Martin',
+  email: 'alex.martin@email.com',
+  goal: 'Prise de masse',
+  level: 'Intermédiaire' as const,
+  joinDate: '2024-01-15',
+};
